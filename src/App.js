@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import axios from 'axios';
 
-// 1. PASTE YOUR REMIX ADDRESS HERE
 const CONTRACT_ADDRESS = "0x0F72B3B43c0c2ABDC4e7DcD877B07b33dA93A0Eb"; 
 const ABI = [{"inputs":[{"internalType":"string","name":"_lat","type":"string"},{"internalType":"string","name":"_lon","type":"string"}],"name":"recordSighting","outputs":[],"stateMutability":"nonpayable","type":"function"}];
 
 function App() {
   const [pos, setPos] = useState({ lat: '', lon: '' });
-
   const getISS = async () => {
-    // This talks to your node server
     const res = await axios.get('https://musical-space-goldfish-5jqvr6rj6gf4xr-3001.app.github.dev/iss-location');
     setPos(res.data);
   };
@@ -20,8 +17,6 @@ function App() {
     const provider = new ethers.BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
     const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, signer);
-    
-    // Sends the lat and lon to Sepolia
     await contract.recordSighting(pos.lat.toString(), pos.lon.toString());
     alert("Saved to Blockchain!");
   };
