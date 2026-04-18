@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import axios from 'axios';
 
-const CONTRACT_ADDRESS = "0x0F72B3B43c0c2ABDC4e7DcD877B07b33dA93A0Eb"; 
+const CONTRACT_ADDRESS = "0xcf234432bF31a25EF3f522A8aEffBf95D9d8b51E"; //THIS ADDRESS CAN CHANGE BASED ON REMIX DEMPLOYMENTS 
 const ABI = [{"inputs":[{"internalType":"string","name":"_lat","type":"string"},{"internalType":"string","name":"_lon","type":"string"}],"name":"recordSighting","outputs":[],"stateMutability":"nonpayable","type":"function"}];
 
 function App() {
